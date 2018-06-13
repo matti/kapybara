@@ -31,5 +31,5 @@ Capybara.default_driver = :chrome
 
 visit "about:blank"
 
-load ARGV[0]
+load ARGV[0] if ARGV[0]
 Pry.start
