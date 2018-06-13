@@ -1,7 +1,13 @@
+require "bundler"
+Bundler.setup
+
 require "capybara"
 require "selenium-webdriver"
 require "chromedriver/helper"
 require "capybara/dsl"
+require "pry-byebug"
+
+require "./app"
 
 require "capybara/dsl"
 include Capybara::DSL
@@ -20,7 +26,10 @@ Capybara.register_driver :chrome do
   )
 end
 
-Chromedriver.set_version "2.37"
+Chromedriver.set_version "2.40"
 Capybara.default_driver = :chrome
 
 visit "about:blank"
+
+load ARGV[0]
+Pry.start
